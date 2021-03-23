@@ -2,9 +2,12 @@ import re
 import json
 import pandas as pd
 import os
-from os.path import join, isfile
+from os.path import join, isfile, isdir
 
 import src.constants as constants
+
+def guarantee_out():
+    return isdir(constants.OUTPUT_DIR) or os.makedirs(constants.OUTPUT_DIR) or isdir(constants.OUTPUT_DIR)
 
 def listfiles(dir_path):
     return [
